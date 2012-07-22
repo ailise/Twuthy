@@ -1,4 +1,6 @@
 Twuthy::Application.routes.draw do
+  resources :voteable_models
+
   resources :tweets
   # The priority is based upon order of creation:
   # first created -> highest priority.
