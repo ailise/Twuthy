@@ -1,0 +1,30 @@
+<h1>Twuthy</h1>
+
+<table>
+  <tr>
+    <th>Tweet</th>
+    <th>User</th>
+    <th>Text</th>
+    <th>Twuthiness</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tweets.each do |tweet| %>
+  <tr>
+    <td><%= tweet.tweet_id %></td>
+    <td><%= tweet.user %></td>
+    <td><%= tweet.text %></td>
+    <td><%= tweet.twuthiness %></td>
+    <td><%= link_to 'Show', tweet %></td>
+<!--    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+<td><%= link_to 'Destroy', tweet, :confirm => 'Are you sure?', :method => :delete %></td> -->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tweet', new_tweet_path %>

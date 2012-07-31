@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tweet:</b>
+  <%= @tweet.tweet_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @tweet.user %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @tweet.text %>
+</p>
+
+<p>
+  <b>Twuthiness</b>
+  <%= @tweet.twuthiness %>
+</p>
+
+<%= form_tag({:controller => "tweets", :action => "upvote"}, :method => "post") do %>
+    <%= hidden_field_tag :tweet_id, @tweet.id %>
+    <%= submit_tag("True.") %>
+<% end %>
+
+<%= form_tag({:controller => "tweets", :action => "downvote"}, :method => "post") do %>
+    <%= hidden_field_tag :tweet_id, @tweet.id %>
+    <%= submit_tag("False") %>
+<% end %>
+
+
+<!-- <%= link_to 'Edit', edit_tweet_path(@tweet) %> | -->
+<%= link_to 'Back', tweets_path %>

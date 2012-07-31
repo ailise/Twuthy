@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tweet_id: 
+  user: MyString
+  text: MyString
+  twuthiness: 1
+
+two:
+  tweet_id: 
+  user: MyString
+  text: MyString
+  twuthiness: 1
