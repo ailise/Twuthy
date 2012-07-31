@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20120721000353) do
     t.string   "user"
     t.string   "text"
     t.integer  "twuthiness"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
 end

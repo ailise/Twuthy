@@ -80,4 +80,20 @@ class TweetsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def upvote
+    @tweet = Tweet.find(params[:tweet_id])
+    @tweet.goodvotes = @tweet.goodvotes + 1
+    @tweet.save
+    redirect_to :root
+  end
+
+  def downvote
+    @tweet = Tweet.find(params[:tweet_id])
+    @tweet.badvotes = @tweet.badvotes + 1
+    @tweet.save
+    redirect_to :root
+  end
 end
+
+
