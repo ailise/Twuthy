@@ -4,6 +4,14 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
 
+    @tweets.each do | tweet |
+      if tweet.goodvotes + tweet.badvotes == 0
+        tweet.twuthiness = 0
+      else
+        tweet.twuthiness = (tweet.goodvotes / (tweet.goodvotes.to_f + tweet.badvotes))*100
+      end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tweets }
@@ -14,6 +22,12 @@ class TweetsController < ApplicationController
   # GET /tweets/1.xml
   def show
     @tweet = Tweet.find(params[:id])
+
+    if @tweet.goodvotes + @tweet.badvotes == 0
+       @tweet.twuthiness = 0
+    else
+       @tweet.twuthiness = (@tweet.goodvotes / (@tweet.goodvotes.to_f + @tweet.badvotes))*100
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +55,8 @@ class TweetsController < ApplicationController
   # POST /tweets.xml
   def create
     @tweet = Tweet.new(params[:tweet])
+    @tweet.goodvotes = 0
+    @tweet.badvotes = 0
 
     respond_to do |format|
       if @tweet.save
@@ -94,6 +110,9 @@ class TweetsController < ApplicationController
     @tweet.save
     redirect_to :root
   end
+
+
+
 end
 
 
